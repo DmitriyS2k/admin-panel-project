@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const ModalWindow = ({delUser}) => {
+const DeleteUserConfirm = ({delUser}) => {
     const [ open, setOpen ] = useState(false);
 
     const handleClickOpen = () => {
@@ -47,4 +47,4 @@ const ModalWindow = ({delUser}) => {
     );
 }
 
-export default ModalWindow;
+export default DeleteUserConfirm;

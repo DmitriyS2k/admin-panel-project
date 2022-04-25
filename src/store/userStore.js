@@ -7,22 +7,24 @@ class UserStore {
         makeAutoObservable(this);
     }
 
-    getUserData = async () => {
+    getUsersData = async () => {
         let response = await axios.get('http://localhost:3000/users');
-        console.log(response)
         return response.data;
     }
 
 
     addUser = (object) => {
+        // object.id = Math.floor(Math.random() * 1000)
+        axios.post(`http://localhost:3000/users`,  object)
     }
 
-    changeUser = (id) => {
-
+    changeUser = () => {
+        axios.patch('http://localhost:3000/users/5', {name: 'Vova'})
     }
 
     deleteUser = (id) => {
-        return this.userData = this.userData.filter(user => user.id != id);
+        axios.delete('http://localhost:3000/users/' + id)
+        this.getUsersData();
     }
 
 

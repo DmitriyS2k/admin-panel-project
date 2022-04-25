@@ -10,8 +10,14 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import userStore from "../store/userStore";
+
+
 
 const CreateAndUpdateUser = () => {
+
+
+    let { addUser, changeUser } = userStore;
 
     let validation = yup.object().shape({
         name: yup.string().required('Обязательно'),
@@ -40,10 +46,10 @@ const CreateAndUpdateUser = () => {
                         gender: ""
                     }}
                     validateOnBlur
-                    onSubmit={(values) => console.log(values)}
+                    onSubmit={values => addUser(values)}
                     validationSchema={validation}
                 >
-                    {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, setFieldValue }) =>
+                    {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) =>
                         (<div className={"add-user-form"}>
                                 <TextField id="name"
                                            label="Имя"
@@ -70,7 +76,7 @@ const CreateAndUpdateUser = () => {
                                 <TextField id="phone"
                                            label="Телефон"
                                            variant="outlined"
-                                           type={"text"}
+                                           type={"number"}
                                            name={"phone"}
                                            onChange={handleChange}
                                            onBlur={handleBlur}
@@ -81,7 +87,7 @@ const CreateAndUpdateUser = () => {
                                 <TextField id="age"
                                            label="Возраст"
                                            variant="outlined"
-                                           type={"text"}
+                                           type={"number"}
                                            name={"age"}
                                            onChange={handleChange}
                                            onBlur={handleBlur}

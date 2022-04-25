@@ -2,15 +2,14 @@ import React from 'react';
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import userStore from "../store/userStore";
-import ModalWindow from "./ModalWindow";
+import DeleteUserConfirm from "./DeleteUserConfirm";
+import ChangeUserModal from "./ChangeUserModal"
 
-import Button from '@mui/material/Button';
+
 
 const NewUser = ({props}) => {
 
     let { deleteUser } = userStore;
-
-
 
     return (
         <TableRow
@@ -23,14 +22,10 @@ const NewUser = ({props}) => {
             <TableCell align="right">{props.email}</TableCell>
             <TableCell align="right">{props.phone}</TableCell>
             <TableCell align="right">{props.age}</TableCell>
-            <TableCell align="right">{props.gender}</TableCell>
+            <TableCell align="right">{props.gender ? "М" : "Ж"}</TableCell>
             <TableCell align="right">
-                <Button variant="contained"
-                        color="primary"
-                        style={{marginRight: '10px'}}>
-                    Edit
-                </Button>
-                <ModalWindow delUser={() => deleteUser(props.id)}/>
+                <ChangeUserModal props={props.id}/>
+                <DeleteUserConfirm delUser={() => deleteUser(props.id)}/>
             </TableCell>
         </TableRow>
      );

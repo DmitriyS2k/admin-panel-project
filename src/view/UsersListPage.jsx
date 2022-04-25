@@ -15,16 +15,16 @@ import Paper from '@mui/material/Paper';
 
 
 const UsersListPage = () => {
-    let { getUserData } = userStore;
+    let { getUsersData} = userStore;
 
     let [ usersDataObj, setUsersDataObj ] = useState([]);
 
     useEffect(() => {
-        setTimeout(getUsers, 2000)
-    }, [])
+        setTimeout(getUsers, 5000)
+    }, [getUsersData()])
 
     async function getUsers() {
-        let response = await getUserData();
+        let response = await getUsersData();
         setUsersDataObj(response);
     }
 
