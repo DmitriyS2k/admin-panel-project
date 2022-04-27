@@ -10,12 +10,13 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { useNavigate } from "react-router-dom";
 import userStore from "../store/userStore";
 
 
 
 const CreateAndUpdateUser = () => {
-
+    let navigate = useNavigate();
 
     let { addUser, changeUser } = userStore;
 
@@ -46,7 +47,7 @@ const CreateAndUpdateUser = () => {
                         gender: ""
                     }}
                     validateOnBlur
-                    onSubmit={values => addUser(values)}
+                    onSubmit={values => {addUser(values); navigate("/userslistpage")}}
                     validationSchema={validation}
                 >
                     {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) =>

@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
         <header className="header">
-          <div className="logo" alt="logo"></div>
+          <Link to="/" className="logo" alt="logo"></Link>
           <nav className="main-menu">
             <ul>
               <li><Link to="/">Главная</Link></li>

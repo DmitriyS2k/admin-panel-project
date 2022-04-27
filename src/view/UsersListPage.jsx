@@ -20,7 +20,7 @@ const UsersListPage = () => {
     let [ usersDataObj, setUsersDataObj ] = useState([]);
 
     useEffect(() => {
-        setTimeout(getUsers, 5000)
+        setTimeout(getUsers, 1000)
     }, [getUsersData()])
 
     async function getUsers() {

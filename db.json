@@ -1,14 +1,6 @@
 {
   "users": [
     {
-      "id": 4,
-      "name": "Катя",
-      "email": "kata@gmail.com",
-      "phone": 3804444222,
-      "age": 24,
-      "gender": 0
-    },
-    {
       "id": 5,
       "name": "Vova",
       "email": "SuperVova@gmail.com",
@@ -252,6 +244,54 @@
       "age": 22,
       "gender": "0",
       "id": 38
+    },
+    {
+      "name": "DIma",
+      "email": "dimon23@gmail.com",
+      "phone": 3434333,
+      "age": 22,
+      "gender": "1",
+      "id": 39
+    },
+    {
+      "name": "DIma",
+      "email": "dimon23@gmail.com",
+      "phone": 3434333,
+      "age": 22,
+      "gender": "1",
+      "id": 40
+    },
+    {
+      "name": "DIma",
+      "email": "dimon23@gmail.com",
+      "phone": 3434333,
+      "age": 22,
+      "gender": "1",
+      "id": 41
+    },
+    {
+      "name": "ereerw",
+      "email": "wrerw@mail.ru",
+      "phone": 343,
+      "age": 33,
+      "gender": "0",
+      "id": 42
+    },
+    {
+      "name": "dfsd",
+      "email": "sdfsd@mail.ru",
+      "phone": 343,
+      "age": 22,
+      "gender": "1",
+      "id": 43
+    },
+    {
+      "name": "wwer",
+      "email": "erwe@mail.ru",
+      "phone": 454,
+      "age": 33,
+      "gender": "1",
+      "id": 44
     }
   ]
 }

@@ -14,8 +14,7 @@ class UserStore {
 
 
     addUser = (object) => {
-        // object.id = Math.floor(Math.random() * 1000)
-        axios.post(`http://localhost:3000/users`,  object)
+        axios.post(`http://localhost:3000/users`,  object);
     }
 
     changeUser = () => {
