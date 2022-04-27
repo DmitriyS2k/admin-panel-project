@@ -1,4 +1,5 @@
 import React from 'react';
+import {observer} from "mobx-react-lite";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import userStore from "../store/userStore";
@@ -7,28 +8,28 @@ import ChangeUserModal from "./ChangeUserModal"
 
 
 
-const NewUser = ({props}) => {
+const NewUser = ({user}) => {
 
     let { deleteUser } = userStore;
 
     return (
         <TableRow
-            key={props.id}
+            key={user.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
             <TableCell component="th" scope="row">
-                {props.name}
+                {user.name}
             </TableCell>
-            <TableCell align="right">{props.email}</TableCell>
-            <TableCell align="right">{props.phone}</TableCell>
-            <TableCell align="right">{props.age}</TableCell>
-            <TableCell align="right">{props.gender ? "М" : "Ж"}</TableCell>
+            <TableCell align="right">{user.email}</TableCell>
+            <TableCell align="right">{user.phone}</TableCell>
+            <TableCell align="right">{user.age}</TableCell>
+            <TableCell align="right">{+user.gender ? "М" : "Ж"}</TableCell>
             <TableCell align="right">
-                <ChangeUserModal props={props.id}/>
-                <DeleteUserConfirm delUser={() => deleteUser(props.id)}/>
+                <ChangeUserModal props={user.id}/>
+                <DeleteUserConfirm delUser={() => deleteUser(user.id)}/>
             </TableCell>
         </TableRow>
      );
 };
 
-export default NewUser;
+export default observer(NewUser);

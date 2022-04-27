@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { useNavigate } from "react-router-dom";
+import userStore from "../store/userStore";
 
 import { Formik} from 'formik';
 import * as yup from 'yup';
@@ -10,15 +12,25 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { useNavigate } from "react-router-dom";
-import userStore from "../store/userStore";
 
-
-
-const CreateAndUpdateUser = () => {
+const CreateAndUpdateUser = ({props}) => {
     let navigate = useNavigate();
+    let { addUser, changeUser, getUserData } = userStore;
+    let [ user, setUser ] = useState({
+        name: "",
+        email:"",
+        phone: "",
+        age: "",
+        gender: "1"
+    })
 
-    let { addUser, changeUser } = userStore;
+    const fetchUser = async () => {
+        if (!props) return
+        let user = await getUserData(props)
+        setUser(user)
+    }
+
+    useEffect(() => {fetchUser()}, [])
 
     let validation = yup.object().shape({
         name: yup.string().required('Обязательно'),
@@ -39,16 +51,16 @@ const CreateAndUpdateUser = () => {
                 autoComplete="off"
             >
                 <Formik
-                    initialValues={{
-                        name: "",
-                        email:"",
-                        phone: "",
-                        age: "",
-                        gender: ""
-                    }}
+                    initialValues={user}
                     validateOnBlur
-                    onSubmit={values => {addUser(values); navigate("/userslistpage")}}
+                    onSubmit={
+                    values => { if(props) {
+                        changeUser(props, values)
+                    } else {addUser(values);}
+                        navigate("/userslistpage")
+                    }}
                     validationSchema={validation}
+                    enableReinitialize={true}
                 >
                     {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) =>
                         (<div className={"add-user-form"}>
@@ -101,7 +113,6 @@ const CreateAndUpdateUser = () => {
                                     <FormLabel id="gender">Пол</FormLabel>
                                     <RadioGroup
                                         aria-labelledby="gender"
-                                        defaultValue="1"
                                         value={values.gender}
                                         name="gender"
                                         row
@@ -116,7 +127,7 @@ const CreateAndUpdateUser = () => {
                                         disabled={!isValid && !dirty}
                                         onClick={handleSubmit}
                                         type={"submit"}
-                                >Добавить</Button>
+                                >{props ? "Изменить" : "Добавить"}</Button>
 
                             </div>
                         )}

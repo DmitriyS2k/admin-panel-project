@@ -18,12 +18,10 @@ const style = {
     p: 4,
 };
 
-const ChangeUserModal = (id) => {
-    console.log(id)
+const ChangeUserModal = ({props}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
 
     return (
         <div>
@@ -43,7 +41,7 @@ const ChangeUserModal = (id) => {
                     <Typography id="modal-modal-title" variant="h6" component="h2" textAlign={"center"}>
                         Редактировать запись
                     </Typography>
-                    <CreateAndUpdateUser props={id}/>
+                    <CreateAndUpdateUser props={props}/>
                 </Box>
             </Modal>
         </div>

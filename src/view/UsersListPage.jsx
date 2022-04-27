@@ -15,23 +15,16 @@ import Paper from '@mui/material/Paper';
 
 
 const UsersListPage = () => {
-    let { getUsersData} = userStore;
-
-    let [ usersDataObj, setUsersDataObj ] = useState([]);
+    let { getUsersData, usersList } = userStore;
 
     useEffect(() => {
-        setTimeout(getUsers, 1000)
-    }, [getUsersData()])
-
-    async function getUsers() {
-        let response = await getUsersData();
-        setUsersDataObj(response);
-    }
+        setTimeout(getUsersData, 1000)
+    }, [])
 
     return (
         <div>
             <h2>Список юзеров</h2>
-            {usersDataObj.length ? <TableContainer component={Paper}>
+            {usersList.length ? <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 950 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -44,7 +37,7 @@ const UsersListPage = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {usersDataObj.map(user => <NewUser props={user} key={user.id}/>)}
+                        {usersList.map(user => <NewUser user={user} key={user.id}/>)}
                     </TableBody>
                 </Table>
             </TableContainer> : <Loading/>}
