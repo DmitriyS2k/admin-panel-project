@@ -4,6 +4,7 @@ import {observer} from "mobx-react-lite";
 import UserListItem from "../components/UserListItem";
 import Loading from "../components/Loading";
 import Pagination from "../components/Pagination";
+import UserListItemControlPanel from "../components/UI/UserListItemControlPanel";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -14,17 +15,27 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
+
 const UsersListPage = () => {
     let { getUsersData, usersList } = userStore;
+    let [ limitUsersList, setLimitUsersList ] = useState(10)
+    let [ page, setPage ] = useState(1);
 
     useEffect(() => {
-        setTimeout(getUsersData, 1000)
-    }, [])
+        setTimeout(() => {getUsersData(limitUsersList, page)}, 500)
+    }, [limitUsersList])
+
+    const limitPagesFn = (count) => {
+        setLimitUsersList(count);
+    };
 
     return (
         <div>
             <h2>Список юзеров</h2>
-            {usersList.length ? <TableContainer component={Paper}>
+            {usersList.length ?
+                <>
+                <UserListItemControlPanel fnLimit={limitPagesFn}/>
+                <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 950 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -40,7 +51,7 @@ const UsersListPage = () => {
                         {usersList.map(user => <UserListItem user={user} key={user.id}/>)}
                     </TableBody>
                 </Table>
-            </TableContainer> : <Loading/>}
+            </TableContainer></> : <Loading/>}
             <Pagination/>
         </div>
     );

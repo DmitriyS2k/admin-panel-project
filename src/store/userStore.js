@@ -1,6 +1,5 @@
 import React from 'react';
 import {makeAutoObservable} from "mobx";
-import axios from "axios";
 import {instance} from "../API/ConfigAxios";
 
 class UserStore {
@@ -10,8 +9,17 @@ class UserStore {
 
     usersList = [];
 
-    getUsersData = async () => {
-        let response = await instance.get('users');
+    getPageCount = (limit) => {
+        return Math.ceil( this.usersList.length / limit);
+    }
+
+    getUsersData = async (limit = 10, page = 1) => {
+        let response = await instance.get('users', {
+            params: {
+                _limit: limit,
+                _page: page
+            }
+        });
         this.usersList = response.data;
     }
 
@@ -30,7 +38,7 @@ class UserStore {
     }
 
     deleteUser = async (id) => {
-        await axios.delete('http://localhost:3000/users/' + id)
+        await instance.delete('users/' + id)
         this.getUsersData()
     }
 
