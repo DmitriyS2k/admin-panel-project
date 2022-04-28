@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import userStore from "../store/userStore";
 import {observer} from "mobx-react-lite";
-import NewUser from "../components/NewUser";
+import UserListItem from "../components/UserListItem";
 import Loading from "../components/Loading";
 import Pagination from "../components/Pagination";
 
@@ -37,7 +37,7 @@ const UsersListPage = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {usersList.map(user => <NewUser user={user} key={user.id}/>)}
+                        {usersList.map(user => <UserListItem user={user} key={user.id}/>)}
                     </TableBody>
                 </Table>
             </TableContainer> : <Loading/>}

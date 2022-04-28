@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import userStore from "../store/userStore";
 
 const Pagination = () => {
-    let { getUserData } = userStore;
+    let { usersList } = userStore;
 
 
     return (

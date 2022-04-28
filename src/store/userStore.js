@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeAutoObservable} from "mobx";
 import axios from "axios";
+import {instance} from "../API/ConfigAxios";
 
 class UserStore {
     constructor() {
@@ -10,21 +11,21 @@ class UserStore {
     usersList = [];
 
     getUsersData = async () => {
-        let response = await axios.get('http://localhost:3000/users');
+        let response = await instance.get('users');
         this.usersList = response.data;
     }
 
     getUserData = async (id) => {
-        let response = await axios.get(`http://localhost:3000/users/${id}`);
+        let response = await instance.get(`users/${id}`);
         return response.data;
     }
 
     addUser = (object) => {
-        axios.post(`http://localhost:3000/users`,  object);
+        instance.post(`users`,  object);
     }
 
     changeUser = async (id, data) => {
-        await axios.patch('http://localhost:3000/users/' + id, data)
+        await instance.patch('users/' + id, data)
         this.getUsersData()
     }
 

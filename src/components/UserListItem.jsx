@@ -8,7 +8,7 @@ import ChangeUserModal from "./ChangeUserModal"
 
 
 
-const NewUser = ({user}) => {
+const UserListItem = ({user}) => {
 
     let { deleteUser } = userStore;
 
@@ -32,4 +32,4 @@ const NewUser = ({user}) => {
      );
 };
 
-export default observer(NewUser);
+export default observer(UserListItem);
