@@ -9,9 +9,9 @@ class UserStore {
 
     usersList = [];
 
-    getPageCount = (limit) => {
-        return Math.ceil( this.usersList.length / limit);
-    }
+    usersAmount = 0;
+
+    limitUsersListStore = 10;
 
     getUsersData = async (limit = 10, page = 1) => {
         let response = await instance.get('users', {
@@ -21,6 +21,12 @@ class UserStore {
             }
         });
         this.usersList = response.data;
+        this.getUsersAmount()
+    }
+
+    getUsersAmount = async () => {
+        let response = await instance.get('users');
+        this.usersAmount = response.data.length;
     }
 
     getUserData = async (id) => {
@@ -34,14 +40,25 @@ class UserStore {
 
     changeUser = async (id, data) => {
         await instance.patch('users/' + id, data)
-        this.getUsersData()
+        this.getUsersData(this.limitUsersListStore, 1)
     }
 
     deleteUser = async (id) => {
         await instance.delete('users/' + id)
-        this.getUsersData()
+        this.getUsersData(this.limitUsersListStore, 1)
     }
 
+    setLimitUsersListStore = (num) => {
+        this.limitUsersListStore = num;
+    }
+
+    sortByName = () => {
+        this.usersList.sort((a, b) => a.name.localeCompare(b.name))
+    }
+
+    sortByAge = () => {
+        this.usersList.sort((a, b) => a.age - b.age)
+    }
 
 }
 

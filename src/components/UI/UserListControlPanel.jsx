@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
 import Box from "@mui/material/Box";
+import TextField from '@mui/material/TextField';
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import userStore from "../../store/userStore";
 
-const UserListItemControlPanel = ({fnLimit}) => {
+const UserListControlPanel = ({fnLimit}) => {
     let [ limitUsersList, setLimitUsersList ] = useState(10)
+
+    let limitFn = (e) => {
+        setLimitUsersList(e.target.value)
+        fnLimit(e.target.value)
+    }
 
     return (
         <div className="control-panel">
@@ -18,9 +25,7 @@ const UserListItemControlPanel = ({fnLimit}) => {
                         id="demo-simple-select"
                         value={limitUsersList}
                         label="age"
-                        onChange={e => {setLimitUsersList(e.target.value)
-                        fnLimit(e.target.value)
-                        }}
+                        onChange={limitFn}
                     >
                         <MenuItem value={5}>5</MenuItem>
                         <MenuItem value={10}>10</MenuItem>
@@ -28,8 +33,18 @@ const UserListItemControlPanel = ({fnLimit}) => {
                     </Select>
                 </FormControl>
             </Box>
+            <Box
+                component="form"
+                sx={{
+                    '& > :not(style)': { m: 1, width: 300 },
+                }}
+                noValidate
+                autoComplete="off"
+            >
+                <TextField id="outlined-basic" label="Поиск" variant="outlined" />
+            </Box>
         </div>
     );
 };
 
-export default UserListItemControlPanel;
+export default UserListControlPanel;

@@ -4,7 +4,7 @@ import {observer} from "mobx-react-lite";
 import UserListItem from "../components/UserListItem";
 import Loading from "../components/Loading";
 import Pagination from "../components/Pagination";
-import UserListItemControlPanel from "../components/UI/UserListItemControlPanel";
+import UserListControlPanel from "../components/UI/UserListControlPanel";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -17,7 +17,7 @@ import Paper from '@mui/material/Paper';
 
 
 const UsersListPage = () => {
-    let { getUsersData, usersList } = userStore;
+    let { getUsersData, usersList, usersAmount, setLimitUsersListStore, sortByName, sortByAge } = userStore;
     let [ limitUsersList, setLimitUsersList ] = useState(10)
     let [ page, setPage ] = useState(1);
 
@@ -27,22 +27,34 @@ const UsersListPage = () => {
 
     const limitPagesFn = (count) => {
         setLimitUsersList(count);
+        setLimitUsersListStore(count);
     };
+
+    const setPageFn = (page) => {
+        setPage(page);
+        getUsersData(limitUsersList, page)
+    }
+
+    const getPageCount = () => {
+        return Math.ceil( usersAmount / limitUsersList);
+    }
+
+
 
     return (
         <div>
             <h2>Список юзеров</h2>
             {usersList.length ?
                 <>
-                <UserListItemControlPanel fnLimit={limitPagesFn}/>
+                <UserListControlPanel fnLimit={limitPagesFn}/>
                 <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 950 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Name</TableCell>
+                            <TableCell onClick={sortByName}>Name</TableCell>
                             <TableCell align="right">Email</TableCell>
                             <TableCell align="right">Phone</TableCell>
-                            <TableCell align="right">Age</TableCell>
+                            <TableCell align="right" onClick={sortByAge}>Age</TableCell>
                             <TableCell align="right">Gender</TableCell>
                             <TableCell align="right"></TableCell>
                         </TableRow>
@@ -52,7 +64,7 @@ const UsersListPage = () => {
                     </TableBody>
                 </Table>
             </TableContainer></> : <Loading/>}
-            <Pagination/>
+            <Pagination pageCount={getPageCount()} setPageFn={setPageFn}/>
         </div>
     );
 };

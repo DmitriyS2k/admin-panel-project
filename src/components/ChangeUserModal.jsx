@@ -24,7 +24,7 @@ const ChangeUserModal = ({props}) => {
     const handleClose = () => setOpen(false);
 
     return (
-        <div>
+        <>
             <Button
                 variant="contained"
                 color="primary"
@@ -41,10 +41,10 @@ const ChangeUserModal = ({props}) => {
                     <Typography id="modal-modal-title" variant="h6" component="h2" textAlign={"center"}>
                         Редактировать запись
                     </Typography>
-                    <CreateAndUpdateUser props={props}/>
+                    <CreateAndUpdateUser props={props} closeFn={handleClose}/>
                 </Box>
             </Modal>
-        </div>
+        </>
     );
 };
 

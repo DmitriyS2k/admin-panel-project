@@ -108,3 +108,19 @@
 .add-user-form button {
     width: 100px;
 }
+
+.pagination-box {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.control-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+table th {
+    cursor: pointer;
+}

@@ -13,7 +13,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-const CreateAndUpdateUser = ({props}) => {
+const CreateAndUpdateUser = ({props, closeFn}) => {
     let navigate = useNavigate();
     let { addUser, changeUser, getUserData } = userStore;
     let [ user, setUser ] = useState({
@@ -56,6 +56,7 @@ const CreateAndUpdateUser = ({props}) => {
                     onSubmit={
                     values => { if(props) {
                         changeUser(props, values)
+                        closeFn()
                     } else {addUser(values);}
                         navigate("/userslistpage")
                     }}

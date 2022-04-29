@@ -3,18 +3,18 @@ import userStore from "../store/userStore";
 import PaginationMaterial from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
-const Pagination = () => {
-    let { getPageCount } = userStore;
-    let [ totalCountPages, setTotalCountPages ] = useState(0)
+const Pagination = ({pageCount, setPageFn}) => {
+    let [ currentPage, setCurrentPage ] = useState(1);
 
     const handleChange = (event, value) => {
-        // setPage(value);
+        setCurrentPage(value);
+        setPageFn(value);
     };
 
     return (
-        <div>
-            <Stack spacing={2}>
-                <PaginationMaterial count={totalCountPages} onChange={handleChange}/>
+        <div className="pagination-box">
+            <Stack spacing={4}>
+                <PaginationMaterial count={pageCount} onChange={handleChange}/>
             </Stack>
         </div>
     );
