@@ -1,19 +1,35 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from "@mui/material/Box";
 import TextField from '@mui/material/TextField';
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+
 import userStore from "../../store/userStore";
 
 const UserListControlPanel = ({fnLimit}) => {
+    let { searchMethod, getUsersData } = userStore;
     let [ limitUsersList, setLimitUsersList ] = useState(10)
+    let [ searchColumn, setSearchColumn ] = useState('name')
+    let [ textSearchField, setTextSearchField ] = useState('')
+
+
 
     let limitFn = (e) => {
         setLimitUsersList(e.target.value)
         fnLimit(e.target.value)
     }
+
+    let handleChange = (event) => {
+        setSearchColumn(event.target.value);
+    };
+
+    useEffect(() => {
+        async function Data() {
+        await getUsersData()
+        searchMethod(textSearchField, searchColumn)
+    } Data()}, [textSearchField])
 
     return (
         <div className="control-panel">
@@ -33,6 +49,7 @@ const UserListControlPanel = ({fnLimit}) => {
                     </Select>
                 </FormControl>
             </Box>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Box
                 component="form"
                 sx={{
@@ -41,8 +58,28 @@ const UserListControlPanel = ({fnLimit}) => {
                 noValidate
                 autoComplete="off"
             >
-                <TextField id="outlined-basic" label="Поиск" variant="outlined" />
+                <TextField id="outlined-basic"
+                           label="Поиск"
+                           variant="outlined"
+                onChange={(e) => {setTextSearchField(e.target.value)}}
+                    />
             </Box>
+            <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Что ищем?</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={searchColumn}
+                        label="Что ищем?"
+                        onChange={handleChange}
+                    >
+                        <MenuItem value={'name'}>Имя</MenuItem>
+                        <MenuItem value={'email'}>E-mail</MenuItem>
+                    </Select>
+                </FormControl>
+            </Box>
+            </div>
         </div>
     );
 };

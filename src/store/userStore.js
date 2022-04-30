@@ -9,24 +9,9 @@ class UserStore {
 
     usersList = [];
 
-    usersAmount = 0;
-
-    limitUsersListStore = 10;
-
-    getUsersData = async (limit = 10, page = 1) => {
-        let response = await instance.get('users', {
-            params: {
-                _limit: limit,
-                _page: page
-            }
-        });
-        this.usersList = response.data;
-        this.getUsersAmount()
-    }
-
-    getUsersAmount = async () => {
+    getUsersData = async () => {
         let response = await instance.get('users');
-        this.usersAmount = response.data.length;
+        this.usersList = response.data;
     }
 
     getUserData = async (id) => {
@@ -40,26 +25,17 @@ class UserStore {
 
     changeUser = async (id, data) => {
         await instance.patch('users/' + id, data)
-        this.getUsersData(this.limitUsersListStore, 1)
+        this.getUsersData()
     }
 
     deleteUser = async (id) => {
         await instance.delete('users/' + id)
-        this.getUsersData(this.limitUsersListStore, 1)
+        this.getUsersData()
     }
 
-    setLimitUsersListStore = (num) => {
-        this.limitUsersListStore = num;
+    searchMethod = (string, searchColumn) => {
+        this.usersList = this.usersList.filter((user) => user[searchColumn].indexOf(string) + 1)
     }
-
-    sortByName = () => {
-        this.usersList.sort((a, b) => a.name.localeCompare(b.name))
-    }
-
-    sortByAge = () => {
-        this.usersList.sort((a, b) => a.age - b.age)
-    }
-
 }
 
 export default new UserStore();

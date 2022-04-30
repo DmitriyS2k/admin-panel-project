@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 12,
-      "name": "Игнатиуссc",
+      "name": "Игнатиусс",
       "email": "kgena99@gmail.com",
       "phone": 38025254455,
       "age": 16,
@@ -13,14 +13,6 @@
       "name": "ДимaF",
       "email": "dimaa@gmail.com",
       "phone": 79541117777,
-      "age": 25,
-      "gender": 1
-    },
-    {
-      "id": 17,
-      "name": "Вова",
-      "email": "SuperVova@gmail.com",
-      "phone": 795345777,
       "age": 25,
       "gender": 1
     },

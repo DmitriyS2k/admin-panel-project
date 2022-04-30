@@ -1,44 +1,66 @@
 import React, {useEffect, useState} from 'react';
 import userStore from "../store/userStore";
 import {observer} from "mobx-react-lite";
-import UserListItem from "../components/UserListItem";
 import Loading from "../components/Loading";
-import Pagination from "../components/Pagination";
 import UserListControlPanel from "../components/UI/UserListControlPanel";
+import ChangeUserModal from "../components/ChangeUserModal";
+import DeleteUserConfirm from "../components/DeleteUserConfirm";
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+
+import { DataGrid } from '@mui/x-data-grid';
+
 
 
 
 const UsersListPage = () => {
-    let { getUsersData, usersList, usersAmount, setLimitUsersListStore, sortByName, sortByAge } = userStore;
+    let { getUsersData, usersList, deleteUser } = userStore;
     let [ limitUsersList, setLimitUsersList ] = useState(10)
-    let [ page, setPage ] = useState(1);
 
     useEffect(() => {
-        setTimeout(() => {getUsersData(limitUsersList, page)}, 500)
+        setTimeout(() => {getUsersData()}, 500)
     }, [limitUsersList])
 
     const limitPagesFn = (count) => {
         setLimitUsersList(count);
-        setLimitUsersListStore(count);
     };
 
-    const setPageFn = (page) => {
-        setPage(page);
-        getUsersData(limitUsersList, page)
-    }
+    const columns = [
+        { field: 'name', headerName: 'Name', width: 200 },
+        { field: 'email', headerName: 'E-mail', width: 200 },
+        {
+            field: 'phone',
+            headerName: 'Phone',
+            type: 'number',
+            width: 180,
+        },
+        {
+            field: 'age',
+            headerName: 'Age',
+            type: 'number',
+            width: 90,
+        },
+        {
+            field: 'gender',
+            headerName: 'Gender',
+            description: 'This column has a value getter and is not sortable.',
+            sortable: false,
+            width: 100,
+            valueGetter: (gender) => +gender.value ? "М" : "Ж",
+        },
+        {
+            field: 'buttons',
+            headerName: 'Actions',
+            description: 'This column has a value getter and is not sortable.',
+            sortable: false,
+            width: 160,
+            renderCell: (user) =>
+            <><ChangeUserModal props={user.id}/>
+                <DeleteUserConfirm delUser={() => deleteUser(user.id)}/>
+            </>,
+        },
+    ];
 
-    const getPageCount = () => {
-        return Math.ceil( usersAmount / limitUsersList);
-    }
-
+    const rows = usersList.slice();
 
 
     return (
@@ -47,24 +69,24 @@ const UsersListPage = () => {
             {usersList.length ?
                 <>
                 <UserListControlPanel fnLimit={limitPagesFn}/>
-                <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 950 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell onClick={sortByName}>Name</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">Phone</TableCell>
-                            <TableCell align="right" onClick={sortByAge}>Age</TableCell>
-                            <TableCell align="right">Gender</TableCell>
-                            <TableCell align="right"></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {usersList.map(user => <UserListItem user={user} key={user.id}/>)}
-                    </TableBody>
-                </Table>
-            </TableContainer></> : <Loading/>}
-            <Pagination pageCount={getPageCount()} setPageFn={setPageFn}/>
+            <div style={{ width: 950 }}>
+                <DataGrid
+                    disableColumnMenu
+                    autoHeight
+                    rows={rows}
+                    columns={columns}
+                    pageSize={limitUsersList}
+                    rowsPerPageOptions={[limitUsersList]}
+                    sx={{padding: 1,
+                        boxShadow: 2,
+                        border: 2,
+                    borderColor: 'gray',
+                        '& .MuiDataGrid-cell:hover': {
+                            color: '#51c3e1'
+                        }}}
+                />
+            </div></>
+                : <Loading/>}
         </div>
     );
 };
