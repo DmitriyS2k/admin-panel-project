@@ -1,20 +1,19 @@
 .loader {
-    margin-top: 100px;
-    width: 250px;
-    height: 220px;
-    background-image: url("../img/React-icon.png");
-    background-size: 200px 175px;
-    background-repeat: no-repeat;
-    background-position: center;
-    animation: rotate 3s infinite linear;
+  margin-top: 100px;
+  width: 250px;
+  height: 220px;
+  background-image: url("../img/React-icon.png");
+  background-size: 200px 175px;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: rotate 3s infinite linear;
 }
 
 @keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -9,14 +9,6 @@
       "gender": "0"
     },
     {
-      "id": 15,
-      "name": "ДимaF",
-      "email": "dimaa@gmail.com",
-      "phone": 79541117777,
-      "age": 25,
-      "gender": 1
-    },
-    {
       "id": 18,
       "name": "Гена",
       "email": "kgena99@gmail.com",
@@ -113,14 +105,6 @@
       "gender": 0
     },
     {
-      "name": "asasdasd",
-      "email": "433443@mai.ru",
-      "phone": "3433",
-      "age": "22",
-      "gender": "0",
-      "id": 35
-    },
-    {
       "name": "45544",
       "email": "sgfsdfg@maill.ru",
       "phone": 55494,
@@ -191,6 +175,14 @@
       "age": 11,
       "gender": "0",
       "id": 45
+    },
+    {
+      "name": "ДимDim",
+      "email": "sdfeeee@mail.ru",
+      "phone": 332222222,
+      "age": 22,
+      "gender": "1",
+      "id": 46
     }
   ]
 }

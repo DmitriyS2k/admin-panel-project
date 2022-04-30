@@ -1,41 +1,47 @@
-import React from 'react';
-import {makeAutoObservable} from "mobx";
-import {instance} from "../API/ConfigAxios";
+import React from "react";
+import { makeAutoObservable } from "mobx";
+import { instance } from "../API/ConfigAxios";
 
 class UserStore {
-    constructor() {
-        makeAutoObservable(this);
-    }
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-    usersList = [];
+  usersList = [];
 
-    getUsersData = async () => {
-        let response = await instance.get('users');
-        this.usersList = response.data;
-    }
+  isDataLoad = false;
 
-    getUserData = async (id) => {
-        let response = await instance.get(`users/${id}`);
-        return response.data;
-    }
+  getUsersData = async () => {
+    let response = await instance.get("users");
+    this.usersList = response.data;
+    this.isDataLoad = true;
+  };
 
-    addUser = (object) => {
-        instance.post(`users`,  object);
-    }
+  getUserData = async (id) => {
+    let response = await instance.get(`users/${id}`);
+    return response.data;
+  };
 
-    changeUser = async (id, data) => {
-        await instance.patch('users/' + id, data)
-        this.getUsersData()
-    }
+  addUser = (object) => {
+    instance.post(`users`, object);
+  };
 
-    deleteUser = async (id) => {
-        await instance.delete('users/' + id)
-        this.getUsersData()
-    }
+  changeUser = async (id, data) => {
+    await instance.patch("users/" + id, data);
+    this.getUsersData();
+  };
 
-    searchMethod = (string, searchColumn) => {
-        this.usersList = this.usersList.filter((user) => user[searchColumn].indexOf(string) + 1)
-    }
+  deleteUser = async (id) => {
+    await instance.delete("users/" + id);
+    this.getUsersData();
+  };
+
+  searchMethod = (string, searchColumn) => {
+    this.usersList = this.usersList.filter(
+      (user) =>
+        user[searchColumn].toLowerCase().indexOf(string.toLowerCase()) + 1
+    );
+  };
 }
 
 export default new UserStore();
