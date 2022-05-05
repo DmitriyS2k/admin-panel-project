@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1000px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.logo {
+    margin-left: 20px;
+    width: 270px;
+    height: 80px;
+    background-image: url(../img/React_logo_wordmark.png);
+    background-repeat: no-repeat;
+    background-size: 250px 80px;
+}
+
+.main-menu {
+    display: flex;
+    align-items: center;
+}
+
+.main-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.main-menu li {
+    margin-right: 3px;
+    border: 2px solid #51c3e1;
+    border-radius: 2px;
+}
+
+.main-menu li a {
+    color: black;
+    display: block;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 22px;
+}
+
+.main-menu li:hover {
+    background-color: #e5e5e5;
+    cursor: pointer;
+}
+
+.main-menu li:active {
+    background-color: #cbcbcb;
+}
+
+.main-menu li:active a {
+    color: dimgray;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.main-content h1 {
+    margin: 200px 20px;
+    font-size: 50px;
+}
+
+.main-content h2 {
+    text-align: center;
+    margin: 20px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 50px;
+    font-weight: bold;
+}
+
+.add-user-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-user-form div {
+    margin: 5px 0;
+    width: 400px;
+}
+
+.add-user-form button {
+    width: 100px;
+}
+
+.pagination-box {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.control-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+table th {
+    cursor: pointer;
+}

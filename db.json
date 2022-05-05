@@ -1,0 +1,188 @@
+{
+  "users": [
+    {
+      "id": 12,
+      "name": "Игнатиусcf",
+      "email": "kgena99@gmail.com",
+      "phone": 38025254455,
+      "age": 16,
+      "gender": "1"
+    },
+    {
+      "id": 18,
+      "name": "Гена",
+      "email": "kgena99@gmail.com",
+      "phone": 380252544,
+      "age": 24,
+      "gender": 1
+    },
+    {
+      "id": 19,
+      "name": "Алексей",
+      "email": "lehatarasov@gmail.com",
+      "phone": 79541117777,
+      "age": 25,
+      "gender": 1
+    },
+    {
+      "id": 20,
+      "name": "Костян",
+      "email": "ketsik99@gmail.com",
+      "phone": 380448877222,
+      "age": 24,
+      "gender": 1
+    },
+    {
+      "id": 21,
+      "name": "Дима",
+      "email": "dimaa@gmail.com",
+      "phone": 79541117777,
+      "age": 25,
+      "gender": 1
+    },
+    {
+      "id": 22,
+      "name": "Катя",
+      "email": "kata@gmail.com",
+      "phone": 3804444222,
+      "age": 24,
+      "gender": 0
+    },
+    {
+      "id": 23,
+      "name": "Вова",
+      "email": "SuperVova@gmail.com",
+      "phone": 795345777,
+      "age": 25,
+      "gender": 1
+    },
+    {
+      "id": 24,
+      "name": "Гена",
+      "email": "kgena99@gmail.com",
+      "phone": 380252544,
+      "age": 24,
+      "gender": 1
+    },
+    {
+      "id": 25,
+      "name": "Алексей",
+      "email": "lehatarasov@gmail.com",
+      "phone": 79541117777,
+      "age": 25,
+      "gender": 1
+    },
+    {
+      "id": 26,
+      "name": "Костя",
+      "email": "ketsik99@gmail.com",
+      "phone": 380448877222,
+      "age": 24,
+      "gender": 1
+    },
+    {
+      "id": 27,
+      "name": "Дима",
+      "email": "dimaa@gmail.com",
+      "phone": 79541117777,
+      "age": 25,
+      "gender": 1
+    },
+    {
+      "id": 28,
+      "name": "Катя",
+      "email": "kata@gmail.com",
+      "phone": 3804444222,
+      "age": 24,
+      "gender": 0
+    },
+    {
+      "id": 29,
+      "name": "ASASD",
+      "email": "kata@gmail.com",
+      "phone": 3804444222,
+      "age": 24,
+      "gender": 0
+    },
+    {
+      "name": "45544",
+      "email": "sgfsdfg@maill.ru",
+      "phone": 55494,
+      "age": 44,
+      "gender": "0",
+      "id": 37
+    },
+    {
+      "name": "dfssdf",
+      "email": "sdfsd@mail.ru",
+      "phone": 433,
+      "age": 22,
+      "gender": "0",
+      "id": 38
+    },
+    {
+      "name": "DIma",
+      "email": "dimon23@gmail.com",
+      "phone": 3434333,
+      "age": 22,
+      "gender": "1",
+      "id": 39
+    },
+    {
+      "name": "DIma",
+      "email": "dimon23@gmail.com",
+      "phone": 3434333,
+      "age": 22,
+      "gender": "1",
+      "id": 40
+    },
+    {
+      "name": "DIma",
+      "email": "dimon23@gmail.com",
+      "phone": 3434333,
+      "age": 22,
+      "gender": "1",
+      "id": 41
+    },
+    {
+      "name": "ereerw",
+      "email": "wrerw@mail.ru",
+      "phone": 343,
+      "age": 33,
+      "gender": "0",
+      "id": 42
+    },
+    {
+      "name": "dfsd",
+      "email": "sdfsd@mail.ru",
+      "phone": 343,
+      "age": 22,
+      "gender": "1",
+      "id": 43
+    },
+    {
+      "name": "wwer",
+      "email": "erwe@mail.ru",
+      "phone": 454,
+      "age": 33,
+      "gender": "1",
+      "id": 44
+    },
+    {
+      "name": "aha",
+      "email": "344@mail.ru",
+      "phone": 222,
+      "age": 11,
+      "gender": "0",
+      "id": 45
+    },
+    {
+      "name": "ДимDim",
+      "email": "sdfeeee@mail.ru",
+      "phone": 332222222,
+      "age": 22,
+      "gender": "1",
+      "id": 46
+    }
+  ]
+}
