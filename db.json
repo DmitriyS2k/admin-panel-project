@@ -17,30 +17,6 @@
       "gender": 1
     },
     {
-      "id": 19,
-      "name": "Алексей",
-      "email": "lehatarasov@gmail.com",
-      "phone": 79541117777,
-      "age": 25,
-      "gender": 1
-    },
-    {
-      "id": 20,
-      "name": "Костян",
-      "email": "ketsik99@gmail.com",
-      "phone": 380448877222,
-      "age": 24,
-      "gender": 1
-    },
-    {
-      "id": 21,
-      "name": "Дима",
-      "email": "dimaa@gmail.com",
-      "phone": 79541117777,
-      "age": 25,
-      "gender": 1
-    },
-    {
       "id": 22,
       "name": "Катя",
       "email": "kata@gmail.com",
