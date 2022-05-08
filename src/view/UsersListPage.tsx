@@ -6,6 +6,7 @@ import Loading from '../components/Loading';
 import UserListControlPanel from '../components/UI/UserListControlPanel';
 import ChangeUserModal from '../components/ChangeUserModal';
 import DeleteUserConfirm from '../components/DeleteUserConfirm';
+import UserAvatar from '../components/UserAvatar';
 
 function UsersListPage() {
   const {
@@ -24,8 +25,18 @@ function UsersListPage() {
   };
 
   const columns = [
-    { field: 'name', headerName: 'Name', width: 200 },
-    { field: 'email', headerName: 'E-mail', width: 200 },
+    {
+      field: 'avatar',
+      headerName: 'Pic',
+      width: 60,
+      type: 'string',
+      sortable: false,
+      renderCell: (avatar) => (
+        <UserAvatar userData={avatar} />
+      ),
+    },
+    { field: 'name', headerName: 'Name', width: 150 },
+    { field: 'email', headerName: 'E-mail', width: 180 },
     {
       field: 'phone',
       headerName: 'Phone',

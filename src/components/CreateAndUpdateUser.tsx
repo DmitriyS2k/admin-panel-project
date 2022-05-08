@@ -11,7 +11,9 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+
 import userStore from '../store/userStore';
+import CroppImgWindow from './CroppComponent/CroppImgWindow';
 
 interface FormProps {
   props?: any;
@@ -21,12 +23,14 @@ interface FormProps {
 function CreateAndUpdateUser({ props, closeFn }: FormProps) {
   const navigate = useNavigate();
   const { addUser, changeUser, getUserData } = userStore;
+  const [userAvatarBase64, setUserAvatarBase64] = React.useState('');
   const [user, setUser] = React.useState({
     name: '',
     email: '',
     phone: '',
     age: '',
     gender: '1',
+    avatar: '',
   });
 
   const fetchUser = async () => {
@@ -45,7 +49,12 @@ function CreateAndUpdateUser({ props, closeFn }: FormProps) {
     phone: yup.number().typeError('Должно быть числом').required('Обязательно'),
     age: yup.number().typeError('Должно быть числом').required('Обязательно'),
     gender: yup.string().required('Обязательно'),
+    avatar: yup.mixed(),
   });
+
+  const getBase64 = (base64Avatar) => {
+    setUserAvatarBase64(base64Avatar);
+  };
 
   return (
     <div>
@@ -61,6 +70,8 @@ function CreateAndUpdateUser({ props, closeFn }: FormProps) {
           initialValues={user}
           validateOnBlur
           onSubmit={(values) => {
+            // eslint-disable-next-line no-param-reassign
+            values.avatar = userAvatarBase64;
             if (props) {
               changeUser(props, values);
               closeFn();
@@ -139,7 +150,15 @@ function CreateAndUpdateUser({ props, closeFn }: FormProps) {
                   <FormControlLabel value="1" control={<Radio />} label="Мужчина" />
                 </RadioGroup>
               </FormControl>
-              <Button variant="contained" disabled={!isValid && !dirty} onClick={() => handleSubmit()} type="submit">
+              <div style={{
+                display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '100px',
+              }}
+              >
+                <span>{user.avatar ? 'Изменить аватар' : 'Добавить аватар'}</span>
+                <CroppImgWindow getBase64={getBase64} />
+              </div>
+
+              <Button variant="contained" disabled={!isValid && !dirty} onClick={() => handleSubmit()} type="submit" style={{ marginTop: 15 }}>
                 {props ? 'Изменить' : 'Добавить'}
               </Button>
             </div>

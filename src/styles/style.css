@@ -101,8 +101,8 @@
     align-items: center;
 }
 
-.add-user-form div {
-    margin: 5px 0;
+.add-user-form > div {
+    margin: 10px 0;
     width: 400px;
 }
 
@@ -124,4 +124,23 @@
 
 table th {
     cursor: pointer;
+}
+
+#prev-img-input {
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.Crop-Controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.crop-module {
+  display: flex;
+  flex-direction: row;
 }
