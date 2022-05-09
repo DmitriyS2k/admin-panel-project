@@ -53,8 +53,7 @@ export default function CroppImgWindow({ getBase64 }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClose = () => {
-    // @ts-ignore
-    const response = previewCanvasRef.current.toDataURL('image/jpeg');
+    const response = previewCanvasRef.current!.toDataURL('image/jpeg');
     setOpen(false);
     getBase64(response);
   };
@@ -85,7 +84,6 @@ export default function CroppImgWindow({ getBase64 }) {
         && imgRef.current
         && previewCanvasRef.current
       ) {
-        // We use canvasPreview as it's much faster than imgPreview.
         canvasPreview(
           imgRef.current,
           previewCanvasRef.current,
@@ -102,7 +100,6 @@ export default function CroppImgWindow({ getBase64 }) {
     <>
       <div className="crop-module">
         <div className="Crop-Controls">
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label
             htmlFor="contained-button-file"
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
@@ -126,9 +123,7 @@ export default function CroppImgWindow({ getBase64 }) {
               border: '1px solid black',
               borderRadius: '50%',
               objectFit: 'contain',
-              // @ts-ignore
               width: 100,
-              // @ts-ignore
               height: 100,
             }}
           />

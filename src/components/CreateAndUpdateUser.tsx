@@ -70,7 +70,6 @@ function CreateAndUpdateUser({ props, closeFn }: FormProps) {
           initialValues={user}
           validateOnBlur
           onSubmit={(values) => {
-            // eslint-disable-next-line no-param-reassign
             values.avatar = userAvatarBase64;
             if (props) {
               changeUser(props, values);
