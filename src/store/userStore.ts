@@ -16,13 +16,11 @@ class UserStore {
     this.isDataLoad = true;
   };
 
-  // eslint-disable-next-line class-methods-use-this
   getUserData = async (id): Promise<any> => {
     const response = await instance.get(`users/${id}`);
     return response.data;
   };
 
-  // eslint-disable-next-line class-methods-use-this
   addUser = (object) => {
     instance.post('users', object);
   };
