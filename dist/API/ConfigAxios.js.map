@@ -1,1 +1,0 @@
-{"version":3,"file":"ConfigAxios.js","sourceRoot":"","sources":["../../src/API/ConfigAxios.js"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,MAAM,CAAC,IAAM,QAAQ,GAAG,KAAK,CAAC,MAAM,CAAC;IACnC,OAAO,EAAE,wBAAwB;IACjC,OAAO,EAAE,IAAI;IACb,OAAO,EAAE,EAAE,iBAAiB,EAAE,QAAQ,EAAE;CACzC,CAAC,CAAC;AAEH,eAAe,QAAQ,CAAC"}
