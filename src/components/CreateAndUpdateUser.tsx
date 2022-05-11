@@ -16,11 +16,11 @@ import userStore from '../store/userStore';
 import CroppImgWindow from './CroppComponent/CroppImgWindow';
 
 interface FormProps {
-  props?: any;
-  closeFn?: any;
+  userId?: number;
+  closeFn?: Function;
 }
 
-function CreateAndUpdateUser({ props, closeFn }: FormProps) {
+function CreateAndUpdateUser({ userId, closeFn }: FormProps) {
   const navigate = useNavigate();
   const { addUser, changeUser, getUserData } = userStore;
   const [userAvatarBase64, setUserAvatarBase64] = React.useState('');
@@ -34,8 +34,8 @@ function CreateAndUpdateUser({ props, closeFn }: FormProps) {
   });
 
   const fetchUser = async () => {
-    if (!props) return;
-    const userFn = await getUserData(props);
+    if (!userId) return;
+    const userFn = await getUserData(userId);
     setUser(userFn);
   };
 
@@ -71,9 +71,9 @@ function CreateAndUpdateUser({ props, closeFn }: FormProps) {
           validateOnBlur
           onSubmit={(values) => {
             values.avatar = userAvatarBase64;
-            if (props) {
-              changeUser(props, values);
-              closeFn();
+            if (userId) {
+              changeUser(userId, values);
+              closeFn!();
             } else {
               addUser(values);
             }
@@ -158,7 +158,7 @@ function CreateAndUpdateUser({ props, closeFn }: FormProps) {
               </div>
 
               <Button variant="contained" disabled={!isValid && !dirty} onClick={() => handleSubmit()} type="submit" style={{ marginTop: 15 }}>
-                {props ? 'Изменить' : 'Добавить'}
+                {userId ? 'Изменить' : 'Добавить'}
               </Button>
             </div>
           )}

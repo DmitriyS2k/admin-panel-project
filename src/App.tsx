@@ -8,10 +8,11 @@ import CreateUserPage from './view/СreateUserPage';
 import Error from './view/Error';
 import UsersListPage from './view/UsersListPage';
 import Home from './view/Home';
+import DashBoard from './view/DashBoard';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App shadow-container">
       <header className="header">
         <Link to="/" className="logo" />
         <nav className="main-menu">
@@ -25,6 +26,9 @@ function App() {
             <li>
               <Link to="/createuserpage">Создать юзера</Link>
             </li>
+            <li>
+              <Link to="/dashboard">Dash</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -33,6 +37,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="userslistpage" element={<UsersListPage />} />
           <Route path="createuserpage" element={<CreateUserPage />} />
+          <Route path="dashboard" element={<DashBoard />} />
           <Route path="404" element={<Error />} />
           <Route path="*" element={<Navigate replace to="/404" />} />
         </Routes>

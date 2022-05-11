@@ -65,7 +65,7 @@ function UsersListPage() {
       width: 160,
       renderCell: (user) => (
         <>
-          <ChangeUserModal props={user.id} />
+          <ChangeUserModal userId={user.id} />
           <DeleteUserConfirm delUser={() => deleteUser(user.id)} />
         </>
       ),
