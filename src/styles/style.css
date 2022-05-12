@@ -8,21 +8,33 @@
 #root {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    min-height: 980px;
+    background-color: #ebebee;
 }
 
 .App {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 1000px;
+    justify-content: start;
+    width: 1200px;
+    min-height: 880px;
+}
+
+.shadow-container {
+  border-radius: 0.625rem;
+  box-shadow: 0 2px 0 rgb(90 97 105 / 11%),
+  0 4px 8px rgb(90 97 105 / 12%),
+  0 10px 10px rgb(90 97 105 / 6%),
+  0 7px 70px rgb(90 97 105 / 10%);
 }
 
 .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 30px;
+    margin: 40px 40px 0 40px;
 }
 
 .logo {
@@ -74,6 +86,7 @@
 
 .main-content {
     display: flex;
+  flex-grow: 2;
     flex-direction: row;
     justify-content: center;
 }
@@ -91,11 +104,12 @@
 .footer-content {
     display: flex;
     justify-content: flex-end;
-    margin: 20px 50px;
+    margin: 30px 50px;
     font-weight: bold;
 }
 
 .add-user-form {
+    padding: 30px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -143,4 +157,40 @@ table th {
 .crop-module {
   display: flex;
   flex-direction: row;
+}
+
+.dashboard-content {
+  width: 1100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dashboard-item {
+  width: 250px;
+  height: 160px;
+  padding: 30px 20px;
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-name {
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  color: #747f92;
+}
+
+.dashboard-data {
+  color: #3d5170;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  margin-top: 20px;
 }

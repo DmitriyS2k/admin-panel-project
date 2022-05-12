@@ -5,7 +5,9 @@ function CreateUserPage() {
   return (
     <div>
       <h2>Создание юзера</h2>
-      <CreateAndUpdateUser />
+      <div className="shadow-container">
+        <CreateAndUpdateUser />
+      </div>
     </div>
   );
 }

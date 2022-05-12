@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-function ChangeUserModal({ props }) {
+function ChangeUserModal({ userId }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,7 +38,7 @@ function ChangeUserModal({ props }) {
           <Typography id="modal-modal-title" variant="h6" component="h2" textAlign="center">
             Редактировать запись
           </Typography>
-          <CreateAndUpdateUser props={props} closeFn={handleClose} />
+          <CreateAndUpdateUser userId={userId} closeFn={handleClose} />
         </Box>
       </Modal>
     </>
