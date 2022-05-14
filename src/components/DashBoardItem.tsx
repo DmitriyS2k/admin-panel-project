@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-function DashBoardComponent({ itemData, index }) {
+function DashBoardItem({ itemData, index }) {
   const [dataCount, setDataCount] = React.useState(0);
 
-  const time = (index + 0.5) * 1000;
+  const time = (index + 0.3) * 1000;
   const step = 1;
 
-  function outNum(num) {
+  function slowCountFn(num) {
     let n = 0;
     const t = Math.round(time / (num / step));
     const interval = setInterval(() => {
@@ -18,7 +18,7 @@ function DashBoardComponent({ itemData, index }) {
     }, t);
   }
 
-  React.useEffect(() => outNum(itemData.data), []);
+  React.useEffect(() => slowCountFn(itemData.data), []);
 
   return (
     <div className="dashboard-item shadow-container">
@@ -28,4 +28,4 @@ function DashBoardComponent({ itemData, index }) {
   );
 }
 
-export default DashBoardComponent;
+export default DashBoardItem;

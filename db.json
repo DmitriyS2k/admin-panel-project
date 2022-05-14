@@ -48,8 +48,9 @@
       "name": "Алексей",
       "email": "lehatarasov@gmail.com",
       "phone": 79541117777,
-      "age": 25,
-      "gender": 1
+      "age": 88,
+      "gender": 1,
+      "avatar": ""
     },
     {
       "id": 26,
@@ -81,8 +82,9 @@
       "name": "ASASD",
       "email": "kata@gmail.com",
       "phone": 3804444222,
-      "age": 24,
-      "gender": 0
+      "age": 97,
+      "gender": 0,
+      "avatar": ""
     },
     {
       "name": "45544",
@@ -104,9 +106,10 @@
       "name": "DIma",
       "email": "dimon23@gmail.com",
       "phone": 3434333,
-      "age": 22,
+      "age": 74,
       "gender": "1",
-      "id": 39
+      "id": 39,
+      "avatar": ""
     },
     {
       "name": "DIma",
@@ -152,9 +155,10 @@
       "name": "aha",
       "email": "344@mail.ru",
       "phone": 222,
-      "age": 11,
+      "age": 45,
       "gender": "0",
-      "id": 45
+      "id": 45,
+      "avatar": ""
     },
     {
       "name": "ДимDim",
