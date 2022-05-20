@@ -1,25 +1,52 @@
 import * as React from 'react';
-import DashBoardComponent from '../components/DashBoardComponent';
+import { observer } from 'mobx-react-lite';
+import DashBoardItem from '../components/DashBoardItem';
+import userStore from '../store/userStore';
 
 function DashBoard() {
-  const dataObject = [{ fieldName: 'Количество юзеров', data: 50 },
-    { fieldName: 'Средний возраст', data: 25 },
-    { fieldName: 'Количество мужчин', data: 72 },
-    { fieldName: 'Количество женщин', data: 28 },
-    { fieldName: 'Еще статистика', data: 157 },
-    { fieldName: 'Еще статистика', data: 288 },
-    { fieldName: 'Еще статистика', data: 1104 },
-    { fieldName: 'Еще статистика', data: 378 }];
+  const { getUsersData, usersList } = userStore;
+
+  React.useEffect(() => { getUsersData(); }, []);
+
+  const averageAgeCalc = (): number => {
+    // eslint-disable-next-line max-len
+    const result = usersList.reduce((previousValue: number, currentValue: any) => currentValue.age + previousValue, 0);
+    return Math.floor(result / usersList.length);
+  };
+
+  const genderMaleCountCalc = (): number => {
+    let count: number = 0;
+    usersList.forEach((item: any) => { if (+item.gender) { count += 1; } });
+    return count;
+  };
+
+  const genderFemaleCountCalc = (): number => usersList.length - genderMaleCountCalc();
+
+  const dateFromProjectStartCalc = (): number => {
+    const now = new Date();
+    const startDay = new Date(2022, 3, 23);
+    const elapsedT = ((now.getTime() - startDay.getTime()) / 1000 / 60 / 60 / 24);
+    return Math.floor(elapsedT);
+  };
+
+  const data = [{ fieldName: 'Количество юзеров', data: usersList.length },
+    { fieldName: 'Средний возраст', data: averageAgeCalc() },
+    { fieldName: 'Мужчин', data: genderMaleCountCalc() },
+    { fieldName: 'Женщин', data: genderFemaleCountCalc() },
+    { fieldName: 'Дней этому проекту', data: dateFromProjectStartCalc() },
+    { fieldName: 'Еще счетчик', data: 1042 },
+    { fieldName: 'Рост Кецика', data: 158 },
+    { fieldName: 'Цена бензина', data: 65 }];
 
   return (
     <div>
       <h2>Dashboard</h2>
       <div className="dashboard-content">
-        {dataObject.map((item, i) => (
-          <DashBoardComponent
+        {data.map((item, i) => (
+          <DashBoardItem
             itemData={item}
             index={i}
-            key={item.fieldName}
+            key={Math.random()}
           />
         ))}
       </div>
@@ -27,4 +54,4 @@ function DashBoard() {
   );
 }
 
-export default DashBoard;
+export default observer(DashBoard);
